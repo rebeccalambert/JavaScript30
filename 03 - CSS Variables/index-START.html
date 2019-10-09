@@ -45,16 +45,23 @@
       width: 100px;
     }
 
+
+    /* This grabs the root element to set these variables in the global context. */
     :root {
       --base: #ffc600;
       --spacing: 10px;
       --blur: 10px;
     }
 
+    /* var(--something) grabs the global variable defined by the --, can add a second input to fall back on if the variable doesn't work for some reason */
     img {
       padding: var(--spacing);
       background: var(--base);
       filter: blur(var(--blur));
+    }
+
+    .hl {
+      color: var(--base);
     }
   </style>
 
@@ -67,6 +74,8 @@
     }
 
     inputs.forEach(input => input.addEventListener('change', handleUpdate));
+
+    // You want an event listener on mousemove as well so that the updates are made dynamically as you adjust the controls. 
     inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
   </script>
 
